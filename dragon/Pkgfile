@@ -1,0 +1,23 @@
+description='A multimedia player where the focus is on simplicity'
+url="https://apps.kde.org/dragon/"
+
+license="LGPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(qt6-base qt6-multimedia extra-cmake-modules kconfig
+             kconfigwidgets kcoreaddons kirigami
+             kcrash kdbusaddons ki18n kio kparts kservice kwidgetsaddons
+             kwindowsystem kxmlgui phonon solid kdoctools)
+run=(hicolor-icon-theme)
+
+set=(kde6 kde6-gear)
+
+name=dragon
+version=26.08.2
+release=1
+
+source=(https://download.kde.org/stable/release-service/$version/src/$name-$version.tar.xz)
+
+build=kde6
