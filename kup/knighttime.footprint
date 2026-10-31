@@ -1,0 +1,20 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libKNightTime.so -> libKNightTime.so.0
+lrwxrwxrwx	root/root	usr/lib/libKNightTime.so.0 -> libKNightTime.so.6.7.5
+-rwxr-xr-x	root/root	usr/lib/libKNightTime.so.6.7.5
+drwxr-xr-x	root/root	usr/lib/libexec/
+-rwxr-xr-x	root/root	usr/lib/libexec/knighttimed
+drwxr-xr-x	root/root	usr/lib/systemd/
+drwxr-xr-x	root/root	usr/lib/systemd/user/
+-rw-r--r--	root/root	usr/lib/systemd/user/plasma-knighttimed.service
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/applications/
+-rw-r--r--	root/root	usr/share/applications/org.kde.knighttimed.desktop
+drwxr-xr-x	root/root	usr/share/dbus-1/
+drwxr-xr-x	root/root	usr/share/dbus-1/interfaces/
+-rw-r--r--	root/root	usr/share/dbus-1/interfaces/org.kde.NightTime.xml
+drwxr-xr-x	root/root	usr/share/dbus-1/services/
+-rw-r--r--	root/root	usr/share/dbus-1/services/org.kde.NightTime.service
+drwxr-xr-x	root/root	usr/share/qlogging-categories6/
+-rw-r--r--	root/root	usr/share/qlogging-categories6/knighttime.categories
