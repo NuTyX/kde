@@ -1,0 +1,23 @@
+description='KDE system manager for hardware, software, and workspaces'
+url='https://kde.org/plasma-desktop/'
+
+license="LGPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+set=(kde6-base kde6 kde6-plasma)
+
+name=systemsettings
+version=6.8.1
+release=1
+
+makedepends=(qt6-base qt6-declarative extra-cmake-modules kdoctools
+             kauth kcmutils kcolorscheme kconfig kconfigwidgets kcoreaddons
+             kcrash kdbusaddons ki18n kiconthemes kio kirigami kitemmodels
+             kitemviews kjobwidgets krunner kservice kwidgetsaddons
+             kwindowsystem kxmlgui plasma-activities)
+
+source=(https://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)
+
+build=kde6
