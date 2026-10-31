@@ -1,0 +1,23 @@
+description='A utility that provides information about a computer system'
+url='https://kde.org/plasma-desktop/'
+
+license="LGPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+set=(kde6 kde6-plasma)
+
+name=kinfocenter
+version=6.8.1
+release=1
+
+makedepends=(dmidecode qt6-base qt6-declarative extra-cmake-modules kdoctools
+             qt6-graphs kauth kcmutils kconfig kcoreaddons ki18n kio kirigami
+             kservice kwidgetsaddons solid systemsettings xorg-xdpyinfo xorg-glu)
+
+run=(wayland-utils)
+
+source=(https://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)
+
+build=kde6
