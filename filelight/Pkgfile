@@ -1,0 +1,23 @@
+description='View disk usage information'
+url='https://apps.kde.org/filelight/'
+
+license="LGPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(qt6-base qt6-declarative extra-cmake-modules kdoctools kconfig
+             kcoreaddons ki18n kwidgetsaddons kxmlgui)
+
+run=(kirigami kirigami-addons kio hicolor-icon-theme kquickcharts
+     qqc2-desktop-style)
+
+set=(kde6 kde6-gear)
+
+name=filelight
+version=26.08.2
+release=1
+
+source=(https://download.kde.org/stable/release-service/$version/src/$name-$version.tar.xz)
+
+build=kde6
