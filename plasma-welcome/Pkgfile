@@ -1,0 +1,19 @@
+description='A friendly onboarding wizard for Plasma'
+url='https://kde.org/plasma-desktop/'
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(extra-cmake-modules qt6-base qt6-declarative  kcmutils kconfig kcoreaddons
+             kdbusaddons kio ki18n kirigami kirigami-addons kjobwidgets knewstuff kservice ksvg
+             kuserfeedback kwindowsystem libplasma plasma-nm plasma5support)
+
+set=(kde6 kde6-plasma)
+
+name=plasma-welcome
+version=6.8.1
+release=1
+
+source=(https://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)
+
+build=kde6
