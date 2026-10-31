@@ -1,0 +1,40 @@
+description='KDE Plasma Desktop'
+url='https://kde.org/plasma-desktop/'
+
+license="LGPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+set=(kde6-base kde6 kde6-plasma)
+
+name=plasma-desktop
+version=6.8.1
+release=2
+
+makedepends=(icu xorg-libx11 libxcb xorg-libxcursor xorg-libxi libxkbcommon
+             xorg-libxkbfile xorg-xf86-input-evdev xorg-xf86-input-libinput
+             qt6-base qt6-5compat qt6-declarative qt6-wayland extra-cmake-modules
+             kdoctools wayland-protocols baloo kauth kbookmarks kcmutils kcodecs
+             kcompletion kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons
+             kdeclarative kglobalaccel kguiaddons ki18n kiconthemes kio
+             kitemmodels kitemviews kjobwidgets kmenuedit
+             knewstuff knotifications knotifyconfig kpackage kpipewire krunner
+             kservice ksvg kwidgetsaddons kwindowsystem kxmlgui libcanberra
+             libksysguard libplasma plasma-activities xdg-user-dirs
+             plasma-workspace plasma5support polkit-kde-agent plasma-activities-stats
+             powerdevil sdl solid sonnet systemsettings wayland xcb-util-keysyms
+             bluedevil ibus kscreen libaccounts-qt packagekit-qt6 plasma-nm plasma-pa scim)
+
+run=(noto-fonts-emoji kirigami kirigami-addons)
+
+source=(nutyx-26.06-1.patch
+        https://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)
+
+PKGMK_GROUPS=(doc)
+
+prepare() {
+ cd $name-$version
+ patch -Np1 -i ../nutyx-26.06-1.patch
+}
+build=kde6
