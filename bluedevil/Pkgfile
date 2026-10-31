@@ -1,0 +1,22 @@
+description='Integrate the Bluetooth technology within KDE applications'
+url='https://www.kde.org/plasma-desktop/'
+
+license="GPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+set=(kde6 kde6-plasma)
+
+name=bluedevil
+version=6.8.1
+release=1
+
+makedepends=(qt6-base qt6-declarative extra-cmake-modules bluez-qt
+             kcmutils kconfig kcoreaddons kdbusaddons kdeclarative 
+             kfilemetadata ki18n kio kirigami kjobwidgets knotifications
+             kservice ksvg kwidgetsaddons kwindowsystem libplasma kdoctools)
+
+source=(https://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)
+
+build=kde6
