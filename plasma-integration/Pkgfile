@@ -1,0 +1,33 @@
+description='Qt Platform Theme integration plugins for the Plasma workspaces'
+url='https://kde.org/plasma-desktop/'
+
+license="LGPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+set=(kde6-base kde6 kde6-plasma)
+
+name=plasma-integration
+version=6.8.1
+release=2
+
+makedepends=(libxcb wayland qt6-base qt6-declarative qt6-wayland extra-cmake-modules
+             kcolorscheme kcompletion kconfig kcoreaddons kguiaddons kiconthemes
+             ki18n kio kstatusnotifieritem kwidgetsaddons kwindowsystem kxmlgui
+             qqc2-breeze-style)
+run=(noto-fonts ttf-hack qqc2-desktop-style)
+
+source=(https://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)
+
+build() {
+ mkdir build
+ cd    build
+ cmake -DCMAKE_INSTALL_PREFIX=/usr \
+       -DBUILD_TESTING=OFF         \
+       -DBUILD_QT5=OFF             \
+       ../$name-$version
+  
+ make
+ make DESTDIR=$PKG install
+}
