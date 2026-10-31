@@ -1,0 +1,50 @@
+description='Plasma Login Manager'
+url='https://kde.org/plasma-desktop/'
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(pam extra-cmake-modules qt6-base qt6-5compat  kcmutils kconfig kcoreaddons
+             kdbusaddons ki18n kirigami kpackage kservice kwindowsystem layer-shell-qt
+             qt6-tools libplasma xorg-libxau pam plasma-workspace)
+
+run=(xorg-xauth xorg-server xorg-xinit kwin)
+
+set=(kde6-base kde6 kde6-plasma)
+
+name=plasma-login-manager
+version=6.8.1
+release=2
+PKGMK_GROUPS=()
+
+source=(https://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)
+prepare() {
+groupadd -g 66 plasmalogin
+useradd -c "Plasma Login Greeter Account" \
+-d /var/lib/plasmalogin \
+-u 66 -g plasmalogin \
+-s /usr/bin/false plasmalogin
+
+ln -sv arch $name-$version/data/pam/nutyx
+sed -e "s@arch@nutyx@g" -e "s@Arch@NuTyX@g" \
+    -i $name-$version/data/CMakeLists.txt 
+}
+build() {
+  cmake -B build -S $name-$version \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DKDE_INSTALL_LIBDIR=lib \
+  -DBUILD_TESTING=OFF \
+  -DDBUS_CONFIG_FILENAME=plasmalogin_org.freedesktop.DisplayManager.conf \
+  -Wno-dev
+  cmake --build build
+  DESTDIR=$PKG cmake --install build
+
+}
+
+package() {
+  mkdir -p $PKG/var/lib/plasmalogin
+  chown -R plasmalogin:plasmalogin $PKG/var/lib/plasmalogin
+  chmod 750 $PKG/var/lib/plasmalogin
+
+}
