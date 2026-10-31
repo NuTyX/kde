@@ -1,0 +1,41 @@
+description="A non-linear video editor for Linux using the MLT video framework"
+url="https://apps.kde.org/kdenlive/"
+
+license="LGPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(qt6-base qt6-declarative qt6-multimedia qt6-networkauth qt6-tools
+             qt6-svg extra-cmake-modules kdoctools karchive kbookmarks kcodecs
+             kcolorscheme kcompletion kconfig kconfigwidgets kcoreaddons kcrash
+             kdbusaddons kfilemetadata kguiaddons ki18n kiconthemes kio kitemviews
+             knewstuff knotifications knotifyconfig ktextwidgets kwidgetsaddons
+             kxmlgui mlt purpose ffmpeg kimageformats kddockwidgets
+             plasma-desktop doxygen opentimeline)
+
+run=(shared-mime-info frei0r-plugins hicolor-icon-theme libmediainfo opencv
+     python recordmydesktop qqc2-desktop-style)
+
+set=(kde6-gear)
+
+name=kdenlive
+version=26.08.2
+release=1
+
+source=(https://download.kde.org/stable/release-service/$version/src/$name-$version.tar.xz)
+
+build() {
+  cmake -B build \
+                -S $name-$version \
+                -DCMAKE_INSTALL_PREFIX=/usr \
+                -DCMAKE_BUILD_TYPE=Release \
+                -DCMAKE_INSTALL_LIBDIR=lib \
+                -DBUILD_TESTING=OFF \
+                -DBUILD_RUN_QMLLINT=OFF \
+                -DFETCH_OTIO=ON \
+                -Wno-dev
+
+  cmake --build build
+  DESTDIR="$PKG" cmake --install build
+}
