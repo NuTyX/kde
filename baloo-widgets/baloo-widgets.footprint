@@ -1,0 +1,17 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/baloo_filemetadata_temp_extractor
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libKF6BalooWidgets.so -> libKF6BalooWidgets.so.6
+-rwxr-xr-x	root/root	usr/lib/libKF6BalooWidgets.so.26.08.2
+lrwxrwxrwx	root/root	usr/lib/libKF6BalooWidgets.so.6 -> libKF6BalooWidgets.so.26.08.2
+drwxr-xr-x	root/root	usr/lib/qt6/
+drwxr-xr-x	root/root	usr/lib/qt6/plugins/
+drwxr-xr-x	root/root	usr/lib/qt6/plugins/kf6/
+drwxr-xr-x	root/root	usr/lib/qt6/plugins/kf6/kfileitemaction/
+-rwxr-xr-x	root/root	usr/lib/qt6/plugins/kf6/kfileitemaction/tagsfileitemaction.so
+drwxr-xr-x	root/root	usr/lib/qt6/plugins/kf6/propertiesdialog/
+-rwxr-xr-x	root/root	usr/lib/qt6/plugins/kf6/propertiesdialog/baloofilepropertiesplugin.so
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/qlogging-categories6/
+-rw-r--r--	root/root	usr/share/qlogging-categories6/baloo-widgets.categories
