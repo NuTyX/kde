@@ -1,0 +1,27 @@
+description='Fast and easy to use image viewer for KDE'
+url="https://apps.kde.org/gwenview/"
+
+license="GPL-2.0-or-later,LGPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(qt6-base qt6-svg qt6-wayland qt6-imageformats qt6-multimedia 
+             extra-cmake-modules
+             kdoctools kconfig wayland-protocols kimageannotator wayland
+             kcolorscheme kcompletion kconfigwidgets kcoreaddons kfilemetadata
+             kguiaddons ki18n kio kitemmodels kitemviews kjobwidgets kparts
+             kservice kwidgetsaddons kxmlgui lcms2 libjpeg-turbo libkdcraw
+             libpng libtiff xorg-libx11 phonon plasma-activities purpose solid
+             kamera kimageformats baloo)
+run=(hicolor-icon-theme)
+
+set=(kde6 kde6-gear)
+
+name=gwenview
+version=26.08.2
+release=1
+
+source=(https://download.kde.org/stable/release-service/$version/src/$name-$version.tar.xz)
+
+build=kde6
