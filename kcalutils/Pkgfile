@@ -1,0 +1,21 @@
+description='The KDE calendar utility library'
+url="https://kontact.kde.org"
+
+license="LGPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(qt6-base qt6-tools extra-cmake-modules kcalendarcore kcodecs ki18n
+             kidentitymanagement kcoreaddons kiconthemes ktexttemplate
+             kwidgetsaddons doxygen)
+
+set=(kde6 kde6-gear)
+
+name=kcalutils
+version=26.08.2
+release=1
+
+source=(https://download.kde.org/stable/release-service/$version/src/$name-$version.tar.xz)
+
+build=kde6
