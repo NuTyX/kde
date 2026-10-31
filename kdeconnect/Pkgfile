@@ -1,0 +1,29 @@
+description='Adds communication between KDE and your smartphone'
+url="https://apps.kde.org/kdeconnect/"
+
+license="LGPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(qt6-base qt6-declarative qt6-5compat qt6-multimedia qt6-wayland
+             extra-cmake-modules kdoctools kpackage wayland-protocols sshfs libei
+             wayland solid kcmutils kconfig kcoreaddons kdbusaddons kdeclarative
+             kguiaddons ki18n kiconthemes kio kirigami kirigami-addons kjobwidgets
+             knotifications kpeople kservice kstatusnotifieritem kwidgetsaddons
+             kwindowsystem xorg-libx11 libxkbcommon xorg-libxtst modemmanager-qt
+             openssl pulseaudio-qt libfakekey qt6-connectivity patch)
+run=(qqc2-desktop-style)
+
+set=(kde6 kde6-gear)
+
+name=kdeconnect
+version=26.08.2
+release=1
+
+source=(https://download.kde.org/stable/release-service/$version/src/$name-kde-$version.tar.xz)
+
+prepare() {
+  mv $name-kde-$version $name-$version
+}
+build=kde6
