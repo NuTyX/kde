@@ -1,0 +1,25 @@
+description='Plasma applet written in QML for managing network connections'
+url='https://kde.org/plasma-desktop/'
+
+license="GPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+set=(kde6 kde6-plasma)
+
+name=plasma-nm
+version=6.8.1
+release=1
+
+makedepends=(extra-cmake-modules qt6-base qt6-declarative qtkeychain-qt6
+             kcmutils kcolorscheme kcompletion kconfig kcoreaddons kdbusaddons
+             kdeclarative ki18n kio kirigami knotifications ksvg
+             kwallet kwidgetsaddons kwindowsystem libplasma solid prison
+             qcoro-qt6 qca-qt6 modemmanager-qt plasma-workspace
+             networkmanager networkmanager-qt)
+run=(kquickcharts)
+
+source=(https://download.kde.org/stable/plasma/$version/${name}-$version.tar.xz)
+
+build=kde6
