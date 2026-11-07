@@ -1,0 +1,10 @@
+INFO="\033[1;36m"
+NORMAL="\033[0;39m"
+
+systemctl enable sddm
+
+sed -i "s@system-local-login@system-login@" etc/pam.d/sddm-autologin
+if [ ! -f etc/sddm.conf ]; then
+  sddm --example-config > etc/sddm.config
+  printf  "Review the generated ${INFO}/etc/sddm.config ${NORMAL}file"
+fi

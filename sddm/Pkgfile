@@ -1,0 +1,54 @@
+description="QML based X11 and Wayland display manager"
+url="https://github.com/sddm/sddm"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(python-docutils qt6-base qt6-declarative qt6-tools
+             extra-cmake-modules)
+run=(xorg-xauth xorg-server xorg-xinit)
+
+name=sddm
+version=0.21.0
+release=9
+
+PKGMK_GROUPS=(man)
+PKGMK_KEEP_SOURCES="no"
+
+source=(sddm-0.20.0-consolidate-1.patch
+        https://github.com/$name/$name/archive/v$version.tar.gz)
+
+prepare() {
+groupadd -g 64 sddm
+useradd -c "Simple Desktop Display manager" \
+-d /var/lib/sddm \
+-u 64 -g sddm \
+-s /sbin/false sddm
+}
+
+build() {
+cd $name-$version
+patch -Np1 -i ../sddm-0.20.0-consolidate-1.patch
+
+mkdir build
+cd    build
+cmake -DCMAKE_INSTALL_PREFIX=/usr             \
+      -DCMAKE_BUILD_TYPE=Release              \
+      -DBUILD_WITH_QT6=ON                     \
+      -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
+      -DKDE_INSTALL_LIBEXECDIR=/usr/lib/$name      \
+      -DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
+      -DBUILD_TESTING=OFF  \
+      -DBUILD_MAN_PAGES=ON \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+      -Wno-dev ..
+make
+make DESTDIR=$PKG install
+
+sed -i "s@system-local-login@system-login@" $PKG/etc/pam.d/sddm-autologin
+
+mkdir -p $PKG/var/lib/sddm
+chown -R sddm:sddm $PKG/var/lib/sddm
+chmod -R 0755 $PKG/var/lib/sddm
+
+}
