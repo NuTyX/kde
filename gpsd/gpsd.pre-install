@@ -1,0 +1,7 @@
+INFO="\033[1;36m"
+NORMAL="\033[0;39m"
+if ! (getent group uucp > /dev/null); then
+  printf "${INFO}Creating uucp group${NORMAL}\n"
+  groupadd -g 89 uucp
+fi
+
